@@ -1,27 +1,29 @@
-# Use a slim Python 3.8 base image
 FROM python:3.8-slim-buster
 
-# Set the working directory
 WORKDIR /app
-
-# Copy the current directory contents into the container
 COPY . .
 
-# Install necessary system dependencies
+# Install system dependencies
 RUN apt-get update && apt-get install -y \
     gcc \
     g++ \
+    build-essential \
     libffi-dev \
-    libssl-dev
+    libssl-dev \
+    python3-dev \
+    python3-pip \
+    python3-venv
 
 # Upgrade pip
 RUN pip install --upgrade pip
 
-# Install necessary Python libraries
-RUN pip install streamlit transformers
+# Install Streamlit
+RUN pip install streamlit
 
-# Expose the Streamlit default port
+# Install Transformers
+RUN pip install transformers
+
 EXPOSE 8501
 
-# Define the command to run the app
 CMD ["streamlit", "run", "--server.address=0.0.0.0", "--server.port=8501", "gpt2_app.py"]
+
