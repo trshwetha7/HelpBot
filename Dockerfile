@@ -1,4 +1,4 @@
-FROM python:3.8
+FROM huggingface/transformers-pytorch-gpu
 
 WORKDIR /app
 COPY . .
@@ -6,8 +6,11 @@ COPY . .
 # Upgrade pip
 RUN pip install --upgrade pip
 
-# Install Streamlit and Transformers library
-RUN pip install streamlit transformers
+# Install Streamlit
+RUN pip install streamlit
+
+# Install Transformers library
+RUN pip install transformers
 
 EXPOSE 8501
 
