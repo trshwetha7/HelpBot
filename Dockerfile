@@ -6,8 +6,8 @@ COPY . .
 # Upgrade pip
 RUN pip install --upgrade pip
 
-# Install Streamlit
-RUN pip install streamlit
+# Install Streamlit and Transformers library
+RUN pip install streamlit transformers
 
 EXPOSE 8501
 
