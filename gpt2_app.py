@@ -2,8 +2,6 @@
 import streamlit as st
 import gpt_2_simple as gpt2
 
-# We assume the model is already loaded in the environment when this app runs.
-# Thus, no explicit loading happens in this code.
 
 st.title("HelpBot")
 
